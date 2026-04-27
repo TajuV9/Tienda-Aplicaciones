@@ -1,0 +1,217 @@
+.navbar {
+    background-color: #157A6E;
+    width: 100%;
+    height: 6vw;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='18' viewBox='0 0 100 18'%3E%3Cpath fill='%2309302c' fill-opacity='0.5' d='M61.82 18c3.47-1.45 6.86-3.78 11.3-7.34C78 6.76 80.34 5.1 83.87 3.42 88.56 1.16 93.75 0 100 0v6.16C98.76 6.05 97.43 6 96 6c-9.59 0-14.23 2.23-23.13 9.34-1.28 1.03-2.39 1.9-3.4 2.66h-7.65zm-23.64 0H22.52c-1-.76-2.1-1.63-3.4-2.66C11.57 9.3 7.08 6.78 0 6.16V0c6.25 0 11.44 1.16 16.14 3.42 3.53 1.7 5.87 3.35 10.73 7.24 4.45 3.56 7.84 5.9 11.31 7.34zM61.82 0h7.66a39.57 39.57 0 0 1-7.34 4.58C57.44 6.84 52.25 8 46 8S34.56 6.84 29.86 4.58A39.57 39.57 0 0 1 22.52 0h15.66C41.65 1.44 45.21 2 50 2c4.8 0 8.35-.56 11.82-2z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+.icono {
+    width: 6vw;
+    height: auto;
+}
+
+.letters {
+    font-size: 2vw;
+    font-weight: 800;
+    color: #A1EF8B;
+}
+
+.login {
+    font-size: 1.2vw;
+    color: #E0F7EF;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.login:hover {
+    color: #A1EF8B;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    text-decoration: none;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.brand-link:hover {
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    font-size: 1vw;
+    padding: 0.5vw 0;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
+    min-width: 10vw;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    border: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(-10px);
+}
+
+.dropdown-item {
+    padding: 0.6vw 1.2vw;
+    cursor: pointer;
+    text-align: end;
+    color: #333;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #e0f7ef;
+    color: #0d685c;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+.dropdown-menu-end {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item.logout {
+    color: #c62828;
+}
+
+.dropdown-item.logout:hover {
+    background-color: #c62828;
+    color: white;
+}
+
+.btn.btn-secondary {
+    background-color: #1E9E8A;
+    border: none;
+    font-size: 1.2vw;
+    padding: 0.4vw 1vw;
+    color: #FFDE59;
+    font-weight: 600;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #1bc3a4;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.creator-zone {
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #157A6E;
+    background-color: #90d97a;
+    padding: 0.4vw 1vw;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.creator-zone:hover {
+    background-color: #A1EF8B;
+}
+
+/* Estilos móviles */
+@media (max-width: 768px) {
+    .navbar {
+        height: 16vw;
+        padding: 0 4vw;
+    }
+
+    .dropdown-menu {
+        font-size: 3vw;
+        min-width: 30vw;
+    }
+
+    .icono {
+        width: 14vw;
+    }
+
+    .letters {
+        font-size: 4vw;
+    }
+
+    .login {
+        font-size: 3.5vw;
+    }
+
+    .btn {
+        font-size: 3.5vw;
+        padding: 1vw 2vw;
+    }
+
+    .creator-zone {
+        font-size: 3.5vw;
+        padding: 1vw 2vw;
+    }
+
+    .user-actions {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2vw;
+    }
+}
+
+.ic-hand {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M23 17c0 3.31-2.69 6-6 6v-1.5c2.5 0 4.5-2 4.5-4.5zM1 7c0-3.31 2.69-6 6-6v1.5c-2.5 0-4.5 2-4.5 4.5zm7-2.68l-4.59 4.6c-3.22 3.22-3.22 8.45 0 11.67s8.45 3.22 11.67 0l7.07-7.09c.49-.47.49-1.26 0-1.75a1.25 1.25 0 0 0-1.77 0l-4.42 4.42l-.71-.71l6.54-6.54c.49-.49.49-1.28 0-1.77s-1.29-.49-1.79 0L14.19 13l-.69-.73l6.87-6.89c.49-.49.49-1.28 0-1.77s-1.28-.49-1.77 0l-6.89 6.89l-.71-.7l5.5-5.48c.5-.49.5-1.28 0-1.77s-1.28-.49-1.77 0l-7.62 7.62a4 4 0 0 1-.33 5.28l-.71-.71a3 3 0 0 0 0-4.24l-.35-.35l4.07-4.07c.49-.49.49-1.28 0-1.77c-.5-.48-1.29-.48-1.79.01'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    transform: scaleX(-1);
+}
+
+.ic-hammer {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    transform: scaleX(-1);
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23000' d='m280.16 242.79l-26.11-26.12a32 32 0 0 0-45.14-.12L27.38 384.08c-6.61 6.23-10.95 14.17-11.35 23.06a32.1 32.1 0 0 0 9.21 23.94l39 39.43a.5.5 0 0 0 .07.07A32.3 32.3 0 0 0 87 480h1.18c8.89-.33 16.85-4.5 23.17-11.17l168.7-180.7a32 32 0 0 0 .11-45.34M490 190l-.31-.31l-34.27-33.92a21.46 21.46 0 0 0-15.28-6.26a21.9 21.9 0 0 0-12.79 4.14c0-.43.06-.85.09-1.22c.45-6.5 1.15-16.32-5.2-25.22a258 258 0 0 0-24.8-28.74a.6.6 0 0 0-.08-.08c-13.32-13.12-42.31-37.83-86.72-55.94A139.6 139.6 0 0 0 257.56 32C226 32 202 46.24 192.81 54.68a120 120 0 0 0-14.18 16.22a16 16 0 0 0 18.65 24.34a75 75 0 0 1 8.58-2.63a63.5 63.5 0 0 1 18.45-1.15c13.19 1.09 28.79 7.64 35.69 13.09c11.7 9.41 17.33 22.09 18.26 41.09c.18 3.82-7.72 18.14-20 34.48a16 16 0 0 0 1.45 21l34.41 34.41a16 16 0 0 0 22 .62c9.73-8.69 24.55-21.79 29.73-25c7.69-4.73 13.19-5.64 14.7-5.8a19.2 19.2 0 0 1 11.29 2.38a1.24 1.24 0 0 1-.31.95l-1.82 1.73l-.3.28a21.52 21.52 0 0 0 .05 30.54l34.26 33.91a21.45 21.45 0 0 0 15.28 6.25a21.7 21.7 0 0 0 15.22-6.2l55.5-54.82c.19-.19.38-.39.56-.59A21.87 21.87 0 0 0 490 190' stroke-width='13' stroke='%23000'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}

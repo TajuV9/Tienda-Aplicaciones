@@ -1,0 +1,12 @@
+<div class="review-section user-review">
+  <div class="review-header">
+    <h2>Crea tu propia reseña</h2>
+    <p-rating [(ngModel)]="newReview.rating"></p-rating>
+  </div>
+
+  <textarea [(ngModel)]="newReview.review" rows="3" placeholder="Escribe tu reseña..."></textarea>
+
+  <div class="review-actions">
+    <button (click)="onSubmit()">Publicar</button>
+  </div>
+</div>

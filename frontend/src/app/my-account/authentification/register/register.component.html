@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<div class="register-background">
+
+    <div class="circle-blob"></div>
+    <div class="circle-blob-2"></div>
+    <div class="blob"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <div class="register-container">
+        <h1>Crea una Cuenta</h1>
+        <form class="register-form" (ngSubmit)="registerUser()">
+            <div class="form-row">
+                <div class="form-field">
+                    <i class="fa-solid fa-user"></i>
+                    <p-floatlabel variant="in">
+                        <input pInputText id="username" type="text" name="userName" [(ngModel)]="userName" required
+                            minlength="3" maxlength="20" />
+                        <label for="username">Nombre de usuario</label>
+                    </p-floatlabel>
+                </div>
+
+                <div class="form-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p-floatlabel variant="in">
+                        <input pInputText id="email" type="email" name="email" [(ngModel)]="email" required
+                            maxlength="100" />
+                        <label for="email">Correo electrónico</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-field">
+                    <i class="fa-solid fa-user"></i>
+                    <p-floatlabel variant="in">
+                        <input pInputText id="name" type="text" name="name" [(ngModel)]="name" required
+                            minlength="2" maxlength="20" [pKeyFilter]="alphabeticPattern" />
+                        <label for="name">Nombre</label>
+                    </p-floatlabel>
+                </div>
+
+                <div class="form-field">
+                    <i class="fa-solid fa-user"></i>
+                    <p-floatlabel variant="in">
+                        <input pInputText id="lastName" type="text" name="lastName" [(ngModel)]="lastName" required
+                            minlength="2" maxlength="20" [pKeyFilter]="alphabeticPattern" />
+                        <label for="lastName">Apellidos</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <p-floatlabel variant="in">
+                        <p-password inputId="password" name="password" [(ngModel)]="password" [feedback]="true"
+                            [toggleMask]="true" promptLabel="Introduce una contraseña" weakLabel="Demasiado simple"
+                            mediumLabel="Complejidad promedio" strongLabel="Contraseña compleja" required minlength="8"
+                            maxlength="20">
+                            <ng-template #header>
+                                <div class="font-semibold text-xm mb-4">Escoge una contraseña</div>
+                            </ng-template>
+                            <ng-template #footer>
+                                <p-divider />
+                                <ul class="pl-2 ml-2 my-0 leading-normal">
+                                    <li>Al menos una minúscula</li>
+                                    <li>Al menos una mayúscula</li>
+                                    <li>Al menos un número</li>
+                                    <li>Al menos un símbolo</li>
+                                    <li>Mínimo 8 caracteres</li>
+                                </ul>
+                            </ng-template>
+                        </p-password>
+                        <label for="password">Contraseña</label>
+                    </p-floatlabel>
+                </div>
+
+                <div class="form-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <p-floatlabel variant="in">
+                        <p-password inputId="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword"
+                            [feedback]="false" [toggleMask]="true" required minlength="8" maxlength="20" />
+                        <label for="confirmPassword">Verificar contraseña</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Registrar ahora</button>
+            </div>
+
+            <p class="separate-text">
+                ¿Ya tienes cuenta? <a class="fade-in" routerLink="/login">Inicia sesión aquí</a>
+            </p>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<a class="card">
+    <div class="image-wrapper">
+        <img [src]="imageUrl" [alt]="name" [ngClass]="imageSectionClass" />
+    </div>
+    <div class="card-content">
+        <h3>{{ name }}</h3>
+        <div class="stars">
+            <ng-container *ngFor="let _ of fullStars">
+                <i class="bi bi-star-fill text-warning stars"></i>
+            </ng-container>
+            <ng-container *ngFor="let _ of emptyStars">
+                <i class="bi bi-star stars"></i>
+            </ng-container>
+        </div>
+    </div>
+</a>

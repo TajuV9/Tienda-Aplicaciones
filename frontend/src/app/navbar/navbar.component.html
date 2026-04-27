@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <a class="brand-link" routerLink="/home">
+        <img src="assets/icon.png" class="icono" alt="Icon">
+        <span class="letters">CenXtract</span>
+    </a>
+
+    <ng-container *ngIf="isLoggedIn(); else loginLink">
+        <div class="user-actions">
+            <a *ngIf="isUserCreator" class="creator-zone" [routerLink]="['/creator-zone']" [queryParams]="{ section: 'view' }">
+                <img class="ic-hammer"> Zona Creador
+            </a>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="ic-hand"> Hola, {{ name }}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" routerLink="/my-account">Gestionar</a></li>
+                    <li><a class="dropdown-item" routerLink="/my-downloads">Descargas</a></li>
+                    <li><a class="dropdown-item logout" (click)="logout()">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #loginLink>
+        <a class="nav-link login" routerLink="/login">Iniciar Sesión</a>
+    </ng-template>
+</nav>

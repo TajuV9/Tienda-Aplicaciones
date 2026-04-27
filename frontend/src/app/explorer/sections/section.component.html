@@ -1,0 +1,25 @@
+<div>
+    <div class="carousel-container">
+        <app-search-bar></app-search-bar>
+        <h1>{{translatedSection }}</h1>
+        <div class="contenido">
+            <p-carousel [value]="images" [numVisible]="1" [numScroll]="1" [circular]="false" autoplayInterval="3000"
+                [showNavigators]="false" [showIndicators]="false">
+                <ng-template pTemplate="item" let-product>
+                    <div class="image">
+                        <img [src]="'../../../assets/banner/' + product.currentSection + '.png'"
+                            alt="Banner del Encabezado" />
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+
+    <div *ngIf="secciones.length > 0" class="sections-container">
+        <div *ngFor="let seccion of secciones; let i = index" class="section-item"
+            [ngClass]="{'animate-from-left': i % 2 === 0, 'animate-from-right': i % 2 === 1}">
+            <app-apps [title]="seccion.title" [type]="seccion.type" [currentSection]="currentSection" [orderBy]="seccion.orderBy">
+            </app-apps>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.apps-grid {
+  display: flex;
+  gap: 2rem;
+  margin-right: 0;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.apps-grid .margin {
+  flex: 0 1 200px;
+  max-width: 220px;
+  min-width: 180px;
+  box-sizing: border-box;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 0;
+  margin-right: 0;
+}

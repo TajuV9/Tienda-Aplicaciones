@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contenido {
+  margin-left: 2vw;
+  box-sizing: border-box;
+  z-index: -1;
+  font-family: Roboto, sans-serif;
+  font-size: 2vw;
+  font-weight: 600;
+  margin-top: 4.9vw;
+  padding-top: 0;
+}
+
+.image {
+  background-color: black;
+  height: 30vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scaleX(-1);
+  object-position: left center;
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  pointer-events: none;
+  animation: fadeOverlay 1.5s ease forwards;
+}
+
+@keyframes fadeOverlay {
+  to {
+    background-color: rgba(30, 30, 30, 0.6);
+  }
+}
+
+.category-card {
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.apps-card:hover {
+  box-shadow: 0 12px 24px #139dff85;
+}
+
+.music-card:hover {
+  box-shadow: 0 12px 24px #fd1f69bf;
+}
+
+.videos-card:hover {
+  box-shadow: 0 12px 24px #fca821cb;
+}
+
+.books-card:hover {
+  box-shadow: 0 12px 24px #18fa2b85;
+}
+
+.category-card h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #333333;
+  transition: color 0.4s ease;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  font-size: 1.4rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.section-bg-apps {
+  background: linear-gradient(-135deg, #A0D8EF 40%, #74C0E3 100%);
+  border-top: 1.5px solid #74C0E3;
+  border-bottom: 1.5px solid #74C0E3;
+}
+
+
+.section-bg-apps:hover .apps-text h2 {
+  color: rgb(255, 255, 255);
+}
+
+.section-bg-music {
+  background: linear-gradient(135deg, #F8C3CD 40%, #F48CA0 100%);
+  border-top: 1.5px solid #F48CA0;
+  border-bottom: 1.5px solid #F48CA0;
+}
+
+
+.section-bg-music:hover .apps-text h2 {
+  color: rgb(255, 255, 255);
+}
+
+.section-bg-videos {
+  background: linear-gradient(-135deg, #FFF4B2 60%, #FFE780 100%);
+  border-top: 1.5px solid #FFE780;
+  border-bottom: 1.5px solid #FFE780;
+}
+
+.section-bg-videos:hover .apps-text h2 {
+  color: rgb(255, 255, 255);
+}
+
+.section-bg-books {
+  background: linear-gradient(135deg, #C6F6D5 60%, #9AE6B4 100%);
+  border-top: 1.5px solid #9AE6B4;
+  border-bottom: 1.5px solid #9AE6B4;
+}
+
+
+.section-bg-books:hover .apps-text h2 {
+  color: rgb(255, 255, 255);
+}
+
+.apps-content {
+  margin-left: 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.reverse-flex {
+  flex-direction: row-reverse;
+}
+
+.reverse-flex h2,
+.reverse-flex p {
+  text-align: right;
+}
+
+.apps-text {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.apps-text:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.animate-from-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideInFromLeft 0.8s forwards ease-out;
+}
+
+.animate-from-right {
+  opacity: 0;
+  transform: translateX(100px);
+  animation: slideInFromRight 0.8s forwards ease-out;
+}
+
+@keyframes slideInFromLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .apps-content,
+  .reverse-flex {
+    flex-direction: column !important;
+    margin-left: 0;
+  }
+
+  .apps-text {
+    text-align: center;
+    min-width: auto;
+  }
+}

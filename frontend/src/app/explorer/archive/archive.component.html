@@ -1,0 +1,83 @@
+<div class="back-button boton" title="Volver atrás" (click)="goBack()">
+    <i class="bi bi-arrow-left text-white fs-5"></i>
+</div>
+
+<div class="archive-detail-container container rounded p-4 position-relative">
+    <div class="row align-items-center">
+
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center mb-4 mb-md-0 d-flex justify-content-center align-items-center">
+                <div class="archive-image-container">
+                    <img [src]="archive.imageUrl" alt="Imagen del juego" class="archive-image shadow" />
+                </div>
+            </div>
+
+            <div class="col-md-8 cont d-flex flex-column justify-content-center h-100">
+                <h2 class="mb-2 fw-bold title text-dark" style="font-size:2.1rem;">{{ archive.title }}</h2>
+                <p class="mb-2">
+                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2" style="font-size:1rem;">
+                        <i class="bi bi-download me-1"></i> Descargas: {{archive.downloads}}
+                    </span>
+                </p>
+                <div class="mb-3 star-rating d-flex align-items-center">
+                    <ng-container *ngFor="let _ of fullStars">
+                        <i class="bi bi-star-fill text-warning fs-5"></i>
+                    </ng-container>
+                    <ng-container *ngFor="let _ of emptyStars">
+                        <i class="bi bi-star text-muted fs-5"></i>
+                    </ng-container>
+                    <span class="ms-2 text-secondary" style="font-size:1.1rem;">({{ archive.stars || 0 }}/5)</span>
+                </div>
+
+                <div class="d-flex gap-2 mt-3 flex-wrap">
+                    <a (click)="download()" class="btn btn-outline-success download-btn flex-fill">
+                        <i class="bi bi-download me-2"></i> Descargar
+                    </a>
+                    <button *ngIf="fromCreator" (click)="updateApp()"
+                        class="btn btn-outline-primary update-btn flex-fill">
+                        <i class="bi bi-pencil-square me-2"></i> Actualizar
+                    </button>
+                    <button *ngIf="fromCreator" (click)="deleteApp()"
+                        class="btn btn-outline-danger delete-btn flex-fill">
+                        <i class="bi bi-trash me-2"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="archive-description mt-4 mb-3 w-100">
+            <div class="desc-label mb-2 text-success fw-semibold">
+                <i class="bi bi-info-circle mb-2" style="font-size:2rem; display:inline-block;"></i>
+                <span class="ms-2">Descripción</span>
+            </div>
+            <div class="text-secondary" [innerHTML]="sanitizedDescription"></div>
+        </div>
+
+        <div class="image-section">
+            <p-carousel *ngIf="imageUrls.length" [value]="imageUrls" [numVisible]="1" [circular]="true"
+                [autoplayInterval]="4000" [showNavigators]="true" [showIndicators]="true">
+                <ng-template pTemplate="item" let-image>
+                    <div class="carousel-img-wrapper">
+                        <img [src]="image" alt="imagen del juego" />
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+
+
+
+        <div class="reviews-section mt-5 p-4 rounded shadow-sm bg-white">
+            <div class="section-header d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-chat-left-dots-fill text-primary fs-4"></i>
+                <h5 class="mb-0 fw-bold text-dark">Reseñas</h5>
+            </div>
+            <app-create-review *ngIf="isUser && !userHasReview && !hasUserReview" [id]="id"
+                (reviewCreated)="onReviewCreated()">
+            </app-create-review>
+            <ul class="list-group list-group-flush">
+                <app-show-review [hasUserReview]="userHasReview || hasUserReview" [id]="id" [fromCreator]="fromCreator"
+                    (reviewDeleted)="onReviewDeleted()" (reviewUpdated)="onReviewUpdated()">
+                </app-show-review>
+            </ul>
+        </div>
+    </div>

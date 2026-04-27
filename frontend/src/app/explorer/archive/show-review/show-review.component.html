@@ -1,0 +1,60 @@
+<div class="reviews-container">
+
+    <section class="review-section user-review" *ngIf="userReview">
+        <div class="review-header">
+            <h2>Tu reseña</h2>
+            <p-rating *ngIf="editMode" [(ngModel)]="editedRating"></p-rating>
+            <p-rating *ngIf="!editMode" [(ngModel)]="userReview.rating" [readonly]="true"></p-rating>
+        </div>
+
+        <textarea *ngIf="editMode" [(ngModel)]="editedReviewText" rows="3"></textarea>
+        <textarea *ngIf="!editMode" [value]="userReview.review" rows="3" readonly></textarea>
+
+        <div class="review-actions">
+            <button *ngIf="!editMode" (click)="startEdit()">Editar</button>
+            <button *ngIf="editMode" (click)="saveChanges()">Guardar cambios</button>
+            <button class="delete-btn" (click)="deleteReview()">Borrar</button>
+        </div>
+    </section>
+
+    <section class="review-section" *ngFor="let review of otherReviews">
+        <div class="review-header">
+            <h3 class="review-author">{{ review.authorName }}</h3>
+            <p-rating [(ngModel)]="review.rating" [readonly]="true"></p-rating>
+        </div>
+
+        <div class="review" *ngIf="!editMode" rows="3" readonly>{{review.review}}</div>
+
+        <div *ngIf="review.response && !review.editingResponse" class="response-section">
+            <label class="response-label">Respuesta del creador:</label>
+            <div readonly class="response-area clean response">{{review.response}}</div>
+
+            <div class="review-actions">
+                <button *ngIf="fromCreator" (click)="editResponse(review)">Editar respuesta</button>
+                <button *ngIf="fromCreator" class="delete-btn" (click)="eliminarRespuesta(review)">
+                    Eliminar respuesta
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="review.editingResponse" class="response-section">
+            <label>Editar respuesta:</label>
+            <textarea [(ngModel)]="review.editedResponse" class="response-area"></textarea>
+
+            <div class="review-actions">
+                <button (click)="saveEditedResponse(review)">Guardar</button>
+                <button (click)="cancelEditResponse(review)">Cancelar</button>
+                <button class="delete-btn" (click)="eliminarRespuesta(review)">Eliminar respuesta</button>
+            </div>
+        </div>
+
+        <div *ngIf="!review.response && fromCreator" class="response-section">
+            <label>Responder a esta reseña:</label>
+            <textarea [(ngModel)]="review.responseDraft" placeholder="Escribe tu respuesta..."
+                class="response-area"></textarea>
+            <div class="review-actions">
+                <button (click)="enviarRespuesta(review)">Enviar respuesta</button>
+            </div>
+        </div>
+    </section>
+</div>

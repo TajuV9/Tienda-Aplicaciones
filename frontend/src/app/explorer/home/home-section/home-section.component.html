@@ -1,0 +1,12 @@
+<div class="apps-grid" *ngIf="displayedApplications.length > 0">
+  <div class="margin" *ngFor="let apps of displayedApplications | slice:0:3">
+    <app-item 
+      [name]="apps.title" 
+      [imageUrl]="apps.imageUrl" 
+      [rating]="apps.rating" 
+      class="app"
+      [routerLink]="['/archive', apps.id]"
+      [sectionType]="sectionType">
+    </app-item>
+  </div>
+</div>

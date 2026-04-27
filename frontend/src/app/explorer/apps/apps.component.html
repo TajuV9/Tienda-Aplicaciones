@@ -1,0 +1,43 @@
+<div class="contenido">
+    <div class="seccion">
+        <a [routerLink]="['/section', currentSection, type]">
+            <div class="secciones-container">
+                <span class="title">{{ title }}</span>
+                <span class="arrow-absolute arrow-right"></span>
+            </div>
+        </a>
+        <hr>
+
+        <ng-container *ngIf="isLoading; else appsLoaded">
+            <div class="category-section">
+                <div class="skeleton-list"
+                    style="display: flex; flex-direction: row; gap: 1.5rem; overflow-x: auto; flex-wrap: nowrap; align-items: stretch;">
+                    <div class="card" *ngFor="let n of [1,2,3,4,5,6,7,8]"
+                        style="display: flex; flex-direction: column; align-items: center; padding: 1rem; width: 140px; min-width: 140px; border-radius: 16px; flex: 0 0 auto;">
+                        <p-skeleton shape="circle" size="48px" styleClass="mb-3" />
+                        <p-skeleton width="70%" height="1.2rem" styleClass="mb-2" />
+                        <p-skeleton width="60%" height="1rem" styleClass="mb-2" />
+                        <p-skeleton width="80%" height="1rem" />
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #appsLoaded>
+            <p-carousel [value]="displayedApplications" [numVisible]="8" [numScroll]="4" [circular]="true"
+                [showIndicators]="false" class="carousel-wrapper">
+                <ng-template pTemplate="item" let-apps>
+                    <div class="margin">
+                        <app-item [name]="apps.title" [imageUrl]="apps.imageUrl" [rating]="apps.rating" class="app"
+                            [routerLink]="['/archive', apps.id]">
+                        </app-item>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </ng-template>
+
+        <ng-template #noItems>
+            <p class="no-items">No hay {{ title.toLowerCase() }} aún.</p>
+        </ng-template>
+    </div>
+</div>

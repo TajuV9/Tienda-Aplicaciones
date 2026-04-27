@@ -1,0 +1,70 @@
+.contenido {
+    margin: 14vh auto;
+    width: 85.05vw;
+    box-sizing: border-box;
+    font-size: 1.8vw;
+    text-align: center;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    background: inherit;
+    border-radius: 12px;
+    padding: 2vw;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contenido h1 {
+    position: relative;
+    font-size: 3vw;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.contenido h1::after {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background-color: #04bd7d;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 4px;
+}
+
+.section-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.section-tabs button {
+    padding: 12px 24px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    color: #157a6e;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.section-tabs button.active {
+    background-color: #04bd7d;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.section-tabs button:hover {
+    transform: translateY(-2px);
+}

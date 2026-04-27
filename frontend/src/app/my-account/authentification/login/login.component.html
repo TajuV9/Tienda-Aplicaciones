@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<div class="login-background">
+
+    <div class="circle-blob"></div>
+    <div class="circle-blob-2"></div>
+    <div class="blob"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <div class="login-container">
+        <h1>¡Bienvenido de Nuevo!</h1>
+
+        <form class="login-form" (ngSubmit)="login()">
+            <div class="form-row">
+                <div class="form-field">
+                    <i class="fa-solid fa-user"></i>
+                    <p-floatlabel variant="in">
+                        <input pInputText id="username" type="text" name="nombre" [(ngModel)]="userName" required
+                            minlength="3" maxlength="20" />
+                        <label for="username">Nombre de usuario</label>
+                    </p-floatlabel>
+                </div>
+                <div class="form-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <p-floatlabel variant="in">
+                        <p-password inputId="password" name="password" [(ngModel)]="password" [feedback]="false"
+                            [toggleMask]="true" required minlength="8" maxlength="20" />
+                        <label for="password">Contraseña</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+            <div class="checkbox-field">
+                <label for="rememberMe">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkbox" />
+                    <span>Recuérdame</span>
+                </label>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Acceder</button>
+            </div>
+
+            <p class="separate-text">
+                ¿No tienes cuenta? <a class="fade-in" routerLink="/register">Regístrate aquí</a>
+            </p>
+        </form>
+    </div>
+</div>

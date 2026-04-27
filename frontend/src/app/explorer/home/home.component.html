@@ -1,0 +1,29 @@
+<div>
+    <div class="contenido">
+        <p-carousel [value]="images" [numVisible]="1" [numScroll]="1" [circular]="false" autoplayInterval="3000"
+            [showNavigators]="false" [showIndicators]="false">
+            <ng-template pTemplate="item" let-product>
+                <div class="image">
+                    <img [src]="'../../../assets/banner/' + product.currentSection + '.png'"
+                        alt="Banner del Encabezado" />
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <div *ngFor="let section of sections; let i = index" class="category-card"
+        [ngClass]="[mapSectionTypeToCssClass(section.type), mapSectionTypeToShadowClass(section.type)]">
+        <div class="apps-content"
+            [ngClass]="{'reverse-flex': i % 2 === 1,'animate-from-left': i % 2 === 0, 'animate-from-right': i % 2 === 1}">
+            <div class="apps-text" [routerLink]="['/', section.route]"
+                [ngClass]="{'active-section': isSectionActive(section.route)}">
+                <h2>{{ section.title }}</h2>
+                <p>Explora nuestras mejores {{ section.title.toLowerCase() }}.</p>
+            </div>
+            <app-homesection [displayedApplications]="getAppsByType(section.type)"
+                [sectionType]="section.type"></app-homesection>
+
+        </div>
+    </div>
+
+
+</div>

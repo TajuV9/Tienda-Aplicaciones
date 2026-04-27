@@ -1,0 +1,23 @@
+<div class="contenido">
+    <h1>¡Bienvenido Creador!</h1>
+
+    <div class="section-tabs" *ngIf="activeSection !== 'update'">
+        <button [class.active]="activeSection === 'view'" (click)="activeSection = 'view'">Ver</button>
+        <button [class.active]="activeSection === 'create'" (click)="activeSection = 'create'">Subir</button>
+    </div>
+
+    <div *ngIf="activeSection === 'view'" class="profile-form">
+        <app-show-content></app-show-content>
+    </div>
+
+    <div *ngIf="activeSection === 'create'" class="profile-form">
+        <app-my-files [initialName]="initialAppName" [initialDescription]="initialDescription"
+            [initialCategory]="initialCategory" (published)="onPublishedSuccess()">
+        </app-my-files>
+    </div>
+
+    <div *ngIf="activeSection === 'update'" class="profile-form">
+        <app-update-zone [appId]="initialAppId"></app-update-zone>
+    </div>
+
+</div>

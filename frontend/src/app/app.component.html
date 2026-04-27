@@ -1,0 +1,16 @@
+<p-toast position="bottom-right"></p-toast>
+
+<div class="layout-container">
+    <div class="navbar">
+        <app-navbar></app-navbar>
+    </div>
+    <div class="sidebar" [class.hidden]="!showSidebar">
+        <app-nav-left></app-nav-left>
+    </div>
+    <div class="sections">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="footer-panel">
+        <app-footer></app-footer>
+    </div>
+</div>

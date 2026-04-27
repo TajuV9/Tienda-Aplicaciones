@@ -1,0 +1,40 @@
+.tos-background {
+    position: relative;
+    min-height: 100vh;
+    background: rgba(219, 255, 243, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.tos-container {
+    background-color: #157a6e;
+    margin-top: 8vw;
+    max-width: 800px;
+    width: 100%;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.tos-container h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.accordion {
+    border: none;
+}
+
+@media (max-width: 600px) {
+    .tos-container {
+        padding: 30px 20px;
+    }
+}

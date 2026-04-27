@@ -1,0 +1,157 @@
+.creator-container {
+    background-color: #0e554d;
+    padding: 40px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.creator-container h2 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.creator-container h2::after {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background-color: #04bd7d;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 4px;
+}
+
+.creator-text {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.terms-link {
+    color: #4fc3f7;
+    text-decoration: underline;
+}
+
+.checkbox-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.checkbox-field label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.checkbox-field input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #04bd7d;
+    border-radius: 5px;
+    background-color: transparent;
+    position: relative;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+
+.checkbox-field input[type="checkbox"]:checked {
+    background-color: #04bd7d;
+    border-color: #04bd7d;
+}
+
+.checkbox-field input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    top: 40%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.checkbox-field input[type="checkbox"]:checked::after {
+    opacity: 1;
+}
+
+.warning {
+    color: #ffce00;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.form-buttons button {
+    padding: 18px 36px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #00c36e, #00a659);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    min-width: 280px;
+    height: 60px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-buttons button:hover {
+    background: linear-gradient(135deg, #61ffba, #25d88a);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.form-buttons button:disabled {
+    background: linear-gradient(135deg, #a1a1a1, #7f7f7f);
+    color: #dddddd;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .form-field {
+        flex: 1 1 100%;
+    }
+
+    .profile-container {
+        padding: 30px 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-buttons button {
+        width: 100%;
+    }
+}

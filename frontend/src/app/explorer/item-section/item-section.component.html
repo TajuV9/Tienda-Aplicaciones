@@ -1,0 +1,14 @@
+<div class="contenido">
+    <div class="seccion">
+        <div class="secciones-container" (click)="goBack()">
+            <span class="title">Top {{type}} de {{displaySection}}</span>
+            <span class="arrow-absolute arrow-left"></span>
+        </div>
+        <hr>
+        <ul class="apps">
+            <app-item *ngFor="let app of applications" [name]="app.title" [imageUrl]="app.imageUrl"
+                [rating]="app.rating" [routerLink]="['/archive', app.id]">
+            </app-item>
+        </ul>
+    </div>
+</div>

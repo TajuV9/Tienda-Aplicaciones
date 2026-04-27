@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<div class="my-files-container">
+    <h1>{{ isEditMode ? 'Actualizar Archivo' : 'Subir Archivo' }}</h1>
+
+    <form #myFilesForm="ngForm" class="my-files-form" (ngSubmit)="publishFile(myFilesForm)" novalidate>
+
+        <div class="form-row">
+            <div class="form-field">
+                <i class="fa-solid fa-heading"></i>
+                <p-floatlabel variant="in">
+                    <input pInputText id="title" type="text" name="title" [(ngModel)]="title" required minlength="3"
+                        maxlength="30" aria-label="Título del archivo" />
+                    <label for="title">Título</label>
+                </p-floatlabel>
+            </div>
+
+            <div class="form-field">
+                <i class="fa-solid fa-layer-group"></i>
+                <p-select [(ngModel)]="selectedCategory" name="selectedCategory" [options]="category" optionLabel="name"
+                    placeholder="Selecciona una categoría" class="w-full md:w-56" aria-label="Categoría" />
+            </div>
+        </div>
+
+        <div class="form-row2">
+            <div class="form-column editor-column">
+                <textarea
+                    class="custom-textarea"
+                    [(ngModel)]="description"
+                    (ngModelChange)="updateDescriptionCount()"
+                    name="description"
+                    aria-label="Descripción del archivo"
+                    placeholder="Escribe una descripción detallada..."
+                    [attr.maxLength]="descriptionCharLimit"
+                ></textarea>
+
+                <span class="char-counter" [ngClass]="{ 'over-limit': descriptionCharCount >= 1000 }" style="margin-top:4px;">
+                    {{ descriptionCharCount }}/ {{ descriptionCharLimit }}
+                </span>
+
+                <div class="form-buttons form-buttons-inline">
+                    <button type="submit">{{ isEditMode ? 'Actualizar' : 'Publicar' }}</button>
+                    <button type="reset" (click)="resetForm(myFilesForm)">Limpiar</button>
+                </div>
+            </div>
+
+            <div class="form-column uploads-column">
+                <div class="upload-box image-upload" (drop)="handleDrop($event, 'image')"
+                    (dragover)="allowDrop($event)">
+                    <label class="upload-label"><i class="fa-solid fa-image"></i> Icono</label>
+                    <div class="custom-upload" (click)="imageInput.click()">
+                        <p *ngIf="!uploadedImage && !imagePreview" class="upload-info-text">
+                            Haz clic o arrastra una imagen aquí
+                        </p>
+                        <img *ngIf="imagePreview" [src]="imagePreview" alt="Vista previa" class="image-preview" />
+                        <p *ngIf="uploadedImage" class="upload-info-text">
+                            <span class="file-name">{{ uploadedImage.name }}</span>
+                            <span class="file-meta"> - {{ uploadedImage.size | number }} bytes</span>
+                        </p>
+                        <p *ngIf="!uploadedImage && imagePreview" class="upload-info-text">
+                            <span class="file-name">Icono actual</span>
+                        </p>
+                    </div>
+
+                    <input type="file" accept="image/*" hidden #imageInput (change)="onImageInput($event)" />
+                </div>
+
+                <div class="upload-box file-upload" (drop)="handleDrop($event, 'file')" (dragover)="allowDrop($event)">
+                    <label class="upload-label"><i class="fa-solid fa-file-arrow-up"></i> Archivo</label>
+
+                    <div class="custom-upload" (click)="fileInput.click()">
+                        <p *ngIf="!uploadedDocument" class="upload-info-text">Haz clic o arrastra un archivo aquí</p>
+                        <p *ngIf="uploadedDocument" class="upload-info-text">
+                            <span class="file-name">{{ uploadedDocument.name }}</span>
+                            <span class="file-meta"> - {{ uploadedDocument.size | number }} bytes</span>
+                        </p>
+                    </div>
+
+                    <input type="file" accept=".pdf,.zip,.rar,.exe,.doc,.docx,.txt,.mp3,.mp4,.wav,.m4a,.epub,.jar,.apk" hidden #fileInput
+                        (change)="onFileInput($event)" />
+                </div>
+
+            </div>
+
+            <div class="form-column previews-column">
+                <div class="upload-box preview-upload">
+                    <label class="upload-label">
+                        <i class="fa-solid fa-images"></i> Previsualizaciones (máx. 10)
+                    </label>
+                    <div class="custom-upload preview-gallery" (click)="previewInput.click()">
+                        <p *ngIf="previewImages.length === 0" class="upload-info-text">
+                            Haz clic o arrastra hasta 10 imágenes aquí
+                        </p>
+                        <div class="preview-thumbnails" *ngIf="previewImages.length > 0">
+                            <div class="preview-thumb" *ngFor="let img of previewImages; let i = index">
+                                <img [src]="img.url" [alt]="'Previsualización ' + (i+1)" />
+                                <button type="button" class="remove-btn" (click)="removePreviewImage(i); $event.stopPropagation()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="file" accept="image/*" hidden #previewInput multiple
+                        (change)="onPreviewImagesInput($event)" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

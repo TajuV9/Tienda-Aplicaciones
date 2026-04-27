@@ -1,0 +1,21 @@
+<div class="category-section">
+  <h2 class="section-title">{{ title }}</h2>
+
+  <ng-container *ngIf="items.length; else noItems">
+    <p-carousel [value]="items" [numVisible]="numVisible" [numScroll]="numScroll" [circular]="true"
+      [autoplayInterval]="4000" class="carousel-wrapper">
+      <ng-template pTemplate="item" let-item>
+        <div class="margin">
+          <app-item [apps]="items" [name]="item.name" [id]="item.id" [imageUrl]="item.imageUrl" [rating]="item.rating"
+            [fromCreator]="fromCreator" [routerLink]="['/archive', item.id]"
+            [queryParams]="fromCreator ? { fromCreator: true } : null">
+          </app-item>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </ng-container>
+
+  <ng-template #noItems>
+    <p class="no-items">No tienes {{ title.toLowerCase() }} aún.</p>
+  </ng-template>
+</div>

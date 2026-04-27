@@ -1,0 +1,14 @@
+<form (ngSubmit)="search()">
+  <div class="search-container" *ngIf="isHomeRoute">
+    <input type="text" class="search-input" placeholder="Buscar..." [(ngModel)]="searchContent" name="search" />
+
+    <button *ngIf="searchContent" type="button" class="clear-button" (click)="searchContent = ''"
+      aria-label="Borrar búsqueda">
+      &times;
+    </button>
+
+    <a class="search-button" [routerLink]="['/search', searchContent]">
+      <img class="search_icon" />
+    </a>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<div class="creator-container">
+    <h2>Convertirse en creador de contenido</h2>
+
+    <p class="creator-text">
+        Para ser creador, debes aceptar los
+        <a class="terms-link" routerLink="/terms-and-conditions">Términos y Condiciones</a>.
+    </p>
+
+    <div class="checkbox-field">
+        <label for="termsAccepted">
+            <input type="checkbox" id="termsAccepted" [(ngModel)]="acceptedTerms" />
+            <span>Acepto los términos y condiciones</span>
+        </label>
+    </div>
+
+    <div class="form-buttons">
+        <button [disabled]="!acceptedTerms" (click)="activateCreator()">
+            Activar modo creador
+        </button>
+    </div>
+
+    <p class="warning" *ngIf="warningMessage">{{ warningMessage }}</p>
+</div>

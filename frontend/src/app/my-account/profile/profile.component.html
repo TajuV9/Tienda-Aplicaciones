@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<form class="profile-form" (ngSubmit)="updateProfile()">
+    <div class="form-row">
+        <div class="form-field">
+            <i class="fa-solid fa-user"></i>
+            <p-iftalabel>
+                <input pInputText id="username" type="text" name="userName" [(ngModel)]="userName" [disabled]="true"
+                    readonly required minlength="3" maxlength="20" />
+                <label for="username">Nombre de usuario</label>
+            </p-iftalabel>
+        </div>
+        <div class="form-field">
+            <i class="fa-solid fa-envelope"></i>
+            <p-iftalabel>
+                <input pInputText id="email" type="email" name="email" [(ngModel)]="email" required maxlength="100" />
+                <label for="email">Correo electrónico</label>
+            </p-iftalabel>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-field">
+            <i class="fa-solid fa-user"></i>
+            <p-iftalabel>
+                <input pInputText id="name" type="text" name="name" [(ngModel)]="name" required minlength="2"
+                    maxlength="20" [pKeyFilter]="alphabeticPattern" />
+                <label for="name">Nombre</label>
+            </p-iftalabel>
+        </div>
+        <div class="form-field">
+            <i class="fa-solid fa-user"></i>
+            <p-iftalabel>
+                <input pInputText id="lastName" type="text" name="lastName" [(ngModel)]="lastName" required
+                    minlength="2" maxlength="20" [pKeyFilter]="alphabeticPattern" />
+                <label for="lastName">Apellidos</label>
+            </p-iftalabel>
+        </div>
+    </div>
+
+    <div class="form-buttons">
+        <button type="submit" (click)="isEditing = true">Modificar</button>
+    </div>
+</form>

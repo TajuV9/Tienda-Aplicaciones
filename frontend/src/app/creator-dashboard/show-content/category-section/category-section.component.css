@@ -1,0 +1,41 @@
+.category-section {
+  background-color: #eefaf6;
+  padding: 1vw 2vw;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+
+  overflow: hidden;
+}
+
+.category-section .section-title {
+  text-align: center;
+  color: #00433c;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.category-section :host ::ng-deep .p-carousel {
+  background-color: #157a6e;  
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.category-section :host ::ng-deep .p-carousel .p-carousel-item {
+  display: flex;
+  justify-content: center;
+}
+
+.category-section :host ::ng-deep .p-carousel .p-carousel-item .card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.margin{
+    margin: 20px;
+}

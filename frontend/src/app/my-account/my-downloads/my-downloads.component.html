@@ -1,0 +1,32 @@
+<div class="contenido">
+    <div class="profile-form">
+        <div class="my-files-container">
+            <h1 class="content-title">Mis descargas</h1>
+
+            <ng-container *ngIf="isLoading; else contentLoaded">
+                <div class="category-section">
+                    <h2 class="section-title">Aplicaciones Descargadas</h2>
+                    <div class="skeleton-list"
+                        style="display: flex; flex-direction: row; gap: 1.5rem; overflow-x: auto; flex-wrap: nowrap; align-items: stretch;">
+                        <div class="card" *ngFor="let n of [1,2,3,4,5,6]"
+                            style="display: flex; flex-direction: column; align-items: center; padding: 1rem; width: 160px; min-width: 160px; border-radius: 16px; flex: 0 0 auto;">
+                            <p-skeleton shape="circle" size="64px" styleClass="mb-3" />
+                            <p-skeleton width="70%" height="1.5rem" styleClass="mb-2" />
+                            <p-skeleton width="60%" height="1rem" styleClass="mb-2" />
+                            <p-skeleton width="80%" height="1rem" />
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #contentLoaded>
+                <app-category-section [title]="'Actualizaciones pendientes'" [items]="appsDownloadedWithUpdates"
+                    [fromCreator]="false" [numVisible]="4" [numScroll]="1">
+                </app-category-section>
+                <app-category-section [title]="'Aplicaciones actualizadas'" [items]="appsDownloadedWithoutUpdates"
+                    [fromCreator]="false" [numVisible]="4" [numScroll]="1">
+                </app-category-section>
+            </ng-template>
+        </div>
+    </div>
+</div>
